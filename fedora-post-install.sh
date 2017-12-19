@@ -29,6 +29,9 @@ restorecon -F /etc/polkit-1/rules.d/80-libvirtd.rules
 # Enable Wayland fractional screen scaling
 #gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']
 
+# Disable automatic opening of folders while hovering on drag an drop operations
+#gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
+
 # Fix Google Chrome download icons
 dnf install -y gnome-icon-theme.noarch gnome-icon-theme-extras.noarch elementary-icon-theme.noarch
 
