@@ -1,4 +1,11 @@
 #!/bin/bash
+export LANG=C
+
+KERNEL_VERSION=$(uname -r)
+
+# Update the rescue image
+/etc/kernel/postinst.d/51-dracut-rescue-postinst.sh ${KERNEL_VERSION} /boot/vmlinuz-${KERNEL_VERSION}
+
 # Give virt-manager permissions for wheel group
 cat << EOF >/etc/polkit-1/localauthority/50-local.d/50-org.virtman-libvirt-local-access.pkla
 [Allow group virtman libvirt management permissions]
