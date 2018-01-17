@@ -97,10 +97,30 @@ restorecon -F /etc/X11/xorg.conf.d/90-trackpoint.conf
 
 
 # dconf dump /org/gnome/terminal/legacy/profiles:/
+
 cat << EOF | dconf load /org/gnome/terminal/legacy/profiles:/
 [/]
-list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', 'c4d30e10-0fc6-4d6a-84e1-368876bdbc8e', '5560419d-7f12-4ccf-8428-caf01ea36e5e', '61c23868-3203-4972-ab69-b29958b8f581']
-default='5560419d-7f12-4ccf-8428-caf01ea36e5e'
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', 'c4d30e10-0fc6-4d6a-84e1-368876bdbc8e', '5560419d-7f12-4ccf-8428-caf01ea36e5e', '61c23868-3203-4972-ab69-b29958b8f581', 'c1849c35-53b2-43fb-b06b-e5fb797805aa', 'd43f4948-7707-4b61-adc9-93eeb3d5f319']
+default='d43f4948-7707-4b61-adc9-93eeb3d5f319'
+
+[:5560419d-7f12-4ccf-8428-caf01ea36e5e]
+foreground-color='#ffffffffffff'
+visible-name='Dark Pastel Roboto Mono Regular 10'
+scrollbar-policy='never'
+login-shell=true
+palette=['#000000000000', '#ffff55555555', '#5555ffff5555', '#ffffffff5555', '#55555555ffff', '#ffff5555ffff', '#5555ffffffff', '#bbbbbbbbbbbb', '#555555555555', '#ffff55555555', '#5555ffff5555', '#ffffffff5555', '#55555555ffff', '#ffff5555ffff', '#5555ffffffff', '#ffffffffffff']
+use-system-font=false
+cursor-colors-set=false
+highlight-colors-set=false
+use-theme-colors=false
+use-transparent-background=true
+font='Roboto Mono 10'
+scrollback-unlimited=true
+bold-color-same-as-fg=true
+bold-color='#bbbbbbbbbbbb'
+background-color='#000000000000'
+background-transparency-percent=17
+audible-bell=false
 
 [:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 foreground-color='rgb(170,170,170)'
@@ -120,9 +140,9 @@ background-color='rgb(0,0,0)'
 background-transparency-percent=17
 audible-bell=false
 
-[:5560419d-7f12-4ccf-8428-caf01ea36e5e]
+[:d43f4948-7707-4b61-adc9-93eeb3d5f319]
 foreground-color='#ffffffffffff'
-visible-name='Dark Pastel Roboto Mono Regular 10'
+visible-name='Dark Pastel Fira Mono Medium 10'
 scrollbar-policy='never'
 login-shell=true
 palette=['#000000000000', '#ffff55555555', '#5555ffff5555', '#ffffffff5555', '#55555555ffff', '#ffff5555ffff', '#5555ffffffff', '#bbbbbbbbbbbb', '#555555555555', '#ffff55555555', '#5555ffff5555', '#ffffffff5555', '#55555555ffff', '#ffff5555ffff', '#5555ffffffff', '#ffffffffffff']
@@ -131,7 +151,26 @@ cursor-colors-set=false
 highlight-colors-set=false
 use-theme-colors=false
 use-transparent-background=true
-font='Roboto Mono 10'
+font='Fira Mono Medium 10'
+scrollback-unlimited=true
+bold-color-same-as-fg=true
+bold-color='#bbbbbbbbbbbb'
+background-color='#000000000000'
+background-transparency-percent=17
+audible-bell=false
+
+[:c1849c35-53b2-43fb-b06b-e5fb797805aa]
+foreground-color='#ffffffffffff'
+visible-name='Dark Pastel Anonymous Pro Regular 11'
+scrollbar-policy='never'
+login-shell=true
+palette=['#000000000000', '#ffff55555555', '#5555ffff5555', '#ffffffff5555', '#55555555ffff', '#ffff5555ffff', '#5555ffffffff', '#bbbbbbbbbbbb', '#555555555555', '#ffff55555555', '#5555ffff5555', '#ffffffff5555', '#55555555ffff', '#ffff5555ffff', '#5555ffffffff', '#ffffffffffff']
+use-system-font=false
+cursor-colors-set=false
+highlight-colors-set=false
+use-theme-colors=false
+use-transparent-background=true
+font='Anonymous Pro 11'
 scrollback-unlimited=true
 bold-color-same-as-fg=true
 bold-color='#bbbbbbbbbbbb'
