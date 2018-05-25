@@ -29,21 +29,25 @@ EOF
 restorecon -F /etc/polkit-1/rules.d/80-libvirtd.rules
 
 # Enable tap-to-click on GDM (logon screen)
-#su - gdm -s /bin/bash
-#export $(dbus-launch)
-#GSETTINGS_BACKEND=dconf gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-
+sudo su - gdm -s /bin/bash << EOF
+export $(dbus-launch)
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+gsettings set org.gnome.desktop.interface scaling-factor 1
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 # Enable Wayland fractional screen scaling
-#gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+gsettings set org.gnome.desktop.interface scaling-factor 1
+EOF
+
 
 # Disable automatic opening of folders while hovering on drag an drop operations
-#gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
+gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
 
 # Fix Google Chrome download icons
 dnf install -y gnome-icon-theme.noarch gnome-icon-theme-extras.noarch elementary-icon-theme.noarch
 
 # Install extra packages
-dnf install -y tmate tlp tlp-rdw icedtea-web
+dnf install -y tmate tmux tlp tlp-rdw icedtea-web
 systemctl enable tlp.service
 
 # Change default I/O scheduler
@@ -55,14 +59,19 @@ ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue
 EOF
 restorecon -F /etc/udev/rules.d/60-io-scheduler.rules
 
+# Set default fonts
+gesettings set org.gnome.desktop.interface font-name 'Roboto 10'
+gesettings set org.gnome.desktop.interface document-font-name 'Roboto 10'
+gesettings set org.gnome.desktop.interface monospace-font-name 'Roboto Mono 10'
+
 # Workaround for touchpad phantom tap-clicks
-cat << EOF > /etc/udev/rules.d/90-psmouse.rules
+cat << EOF >/etc/udev/rules.d/90-psmouse.rules
 ACTION=="add|change", SUBSYSTEM=="module", DEVPATH=="/module/psmouse", ATTR{parameters/synaptics_intertouch}="0"
 EOF
 restorecon -F /etc/udev/rules.d/90-psmouse.rules
 
 # Configure trackpoint for scrolling when combined with physical middle button
-cat << EOF > /etc/X11/xorg.conf.d/90-trackpoint.conf
+cat << EOF >/etc/X11/xorg.conf.d/90-trackpoint.conf
 Section "InputClass"
     Identifier "Trackpoint Scrolling"
     MatchProduct "TPPS/2 IBM TrackPoint"
@@ -83,7 +92,10 @@ EndSection
 EOF
 restorecon -F /etc/X11/xorg.conf.d/90-trackpoint.conf
 
-#for key in $(gsettings list-keys org.gnome.desktop.peripherals.touchpad); do echo -n "$key: "; gsettings get org.gnome.desktop.peripherals.touchpad $key; done
+#for key in $(gsettings list-keys org.gnome.desktop.peripherals.touchpad); do
+#   echo -n "$key: ";
+#   gsettings get org.gnome.desktop.peripherals.touchpad $key;
+#done
 #send-events: 'enabled'
 #natural-scroll: true
 #tap-to-click: true
@@ -94,7 +106,6 @@ restorecon -F /etc/X11/xorg.conf.d/90-trackpoint.conf
 #tap-and-drag: false
 #edge-scrolling-enabled: false
 #disable-while-typing: true
-
 
 # dconf dump /org/gnome/terminal/legacy/profiles:/
 
