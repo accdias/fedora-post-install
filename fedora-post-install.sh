@@ -56,6 +56,12 @@ for unit in abrtd abrt-ccpp abrt-journal-core abrt-oops abrt-pstoreoops abrt-vmc
     sudo systemctl disable ${unit}.service
 done
 
+# Disable Gnome Software updates and notifications
+for unit in packagekit dnf-makecache.service dnf-makecache.timer; do
+    sudo systemctl stop ${unit}
+    sudo systemctl disable ${unit}
+done
+
 # Change default I/O scheduler
 cat << EOF >/etc/udev/rules.d/60-io-scheduler.rules
 # set deadline scheduler for non-rotating disks
