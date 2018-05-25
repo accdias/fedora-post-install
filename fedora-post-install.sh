@@ -50,6 +50,12 @@ dnf install -y gnome-icon-theme.noarch gnome-icon-theme-extras.noarch elementary
 dnf install -y tmate tmux tlp tlp-rdw icedtea-web
 systemctl enable tlp.service
 
+# Disable abrtd services
+for unit in abrtd abrt-ccpp abrt-journal-core abrt-oops abrt-pstoreoops abrt-vmcore abrt-xorg; do
+    sudo systemctl stop ${unit}.service
+    sudo systemctl disable ${unit}.service
+done
+
 # Change default I/O scheduler
 cat << EOF >/etc/udev/rules.d/60-io-scheduler.rules
 # set deadline scheduler for non-rotating disks
