@@ -43,6 +43,11 @@ EOF
 # Disable automatic opening of folders while hovering on drag an drop operations
 gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
 
+# Change Gnome Terminal word selection string
+#profile_puuid=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
+#gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$puuid/ word-char-exceptions '@ms "-=&#:/.?@+~_%;"'
+#gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$puuid/ word-char-exceptions '@ms nothing'
+
 # Fix Google Chrome download icons
 dnf install -y gnome-icon-theme.noarch gnome-icon-theme-extras.noarch elementary-icon-theme.noarch
 
