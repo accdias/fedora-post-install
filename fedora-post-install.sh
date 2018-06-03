@@ -48,11 +48,14 @@ gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
 #gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$puuid/ word-char-exceptions '@ms "-=&#:/.?@+~_%;"'
 #gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$puuid/ word-char-exceptions '@ms nothing'
 
+# Remove uncessary packages
+sudo dnf remove -y abrt*
+
 # Fix Google Chrome download icons
-dnf install -y gnome-icon-theme.noarch gnome-icon-theme-extras.noarch elementary-icon-theme.noarch
+sudo dnf install -y gnome-icon-theme.noarch gnome-icon-theme-extras.noarch elementary-icon-theme.noarch
 
 # Install extra packages
-dnf install -y tmate tmux tlp tlp-rdw icedtea-web
+sudo dnf install -y tmate tmux tlp tlp-rdw icedtea-web
 systemctl enable tlp.service
 
 # Disable abrtd services
