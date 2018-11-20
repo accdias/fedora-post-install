@@ -31,14 +31,21 @@ restorecon -F /etc/polkit-1/rules.d/80-libvirtd.rules
 # Enable tap-to-click on GDM (logon screen)
 sudo su - gdm -s /bin/bash << EOF
 export $(dbus-launch)
-gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
-gsettings set org.gnome.desktop.interface scaling-factor 1
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 # Enable Wayland fractional screen scaling
 gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 gsettings set org.gnome.desktop.interface scaling-factor 1
+# Configure Touchpad
+gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
+gsettings set org.gnome.desktop.peripherals.touchpad edge-scrolling-enabled false
+gsettings set org.gnome.desktop.peripherals.touchpad left-handed 'mouse'
+gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
+gsettings set org.gnome.desktop.peripherals.touchpad send-events 'enabled'
+gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
+gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag true
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
 EOF
-
 
 # Disable automatic opening of folders while hovering on drag an drop operations
 gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
@@ -83,6 +90,18 @@ restorecon -F /etc/udev/rules.d/60-io-scheduler.rules
 gesettings set org.gnome.desktop.interface font-name 'Roboto 10'
 gesettings set org.gnome.desktop.interface document-font-name 'Roboto 10'
 gesettings set org.gnome.desktop.interface monospace-font-name 'Roboto Mono 10'
+
+# Configure Touchpad
+gsettings set org.gnome.desktop.peripherals.touchpad send-events 'enabled'
+gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
+gsettings set org.gnome.desktop.peripherals.touchpad left-handed 'mouse'
+gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
+gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
+gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag true
+gsettings set org.gnome.desktop.peripherals.touchpad edge-scrolling-enabled false
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
 
 # Workaround for touchpad phantom tap-clicks
 cat << EOF >/etc/udev/rules.d/90-psmouse.rules
