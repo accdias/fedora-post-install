@@ -47,6 +47,13 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
 EOF
 
+# US International with dead keys
+gsettings set org.gnome.desktop.input-sources mru-sources "[('xkb', 'us+intl'), ('ibus', 'typing-booster:en_US')]"
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+intl')]"
+# Set Right Alt as compose key
+gsettings set org.gnome.desktop.input-sources xkb-options "['compose:ralt']"
+# Use the same keyboard layout for all windows
+gsettings set org.gnome.desktop.input-sources per-window false
 # Disable automatic opening of folders while hovering on drag an drop operations
 gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
 
