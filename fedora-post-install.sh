@@ -72,6 +72,9 @@ sudo dnf install -y gnome-icon-theme.noarch gnome-icon-theme-extras.noarch eleme
 sudo dnf install -y tmate tmux tlp tlp-rdw icedtea-web
 systemctl enable tlp.service
 
+# Enable SSD trimmer
+sudo systemctl enable --now fstrim.timer
+
 # Disable abrtd services
 for unit in abrtd abrt-ccpp abrt-journal-core abrt-oops abrt-pstoreoops abrt-vmcore abrt-xorg; do
     sudo systemctl stop ${unit}.service
