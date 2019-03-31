@@ -278,4 +278,22 @@ background-transparency-percent=17
 audible-bell=false
 EOF
 
+# Fix Faience theme system icons
+FAIENCE_DIR='/usr/share/icons/Faience/apps/scalable'
+if [[ -d ${FAIENCE_DIR} ]]; then
+    if [[ cd ${FAIENCE_DIR} ]]; then
+        sudo ln -sf ./accessories-calculator.svg org.gnome.Calculator.svg
+        sudo ln -sf ./clock.svg org.gnome.clocks.svg
+        sudo ln -sf ./eog.svg org.gnome.eog.svg
+        sudo ln -sf ./web-browser.svg org.gnome.Epiphany.svg
+        sudo ln -sf ./evince.svg org.gnome.Evince.svg
+        sudo ln -sf ./text-editor.svg org.gnome.gedit.svg
+        sudo ln -sf ./system-file-manager.svg org.gnome.Nautilus.svg
+        sudo ln -sf ../../categories/scalable/preferences-desktop.svg org.gnome.Settings.svg
+        sudo ln -sf ./update-manager.svg org.gnome.Software.svg
+        sudo ln -sf ./utilities-terminal.svg org.gnome.Terminal.svg
+        sudo ln -sf ./totem.svg org.gnome.Totem.svg
+    fi
+fi
+
 # End of file
