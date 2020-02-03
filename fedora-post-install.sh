@@ -100,47 +100,88 @@ restorecon -F /etc/udev/rules.d/60-io-scheduler.rules
 # Create Android devices udev rules
 cat << EOF >/etc/udev/rules.d/51-android.rules
 # /etc/udev/rules.d/51-android.rules
-SUBSYSTEM=="usb",ATTR{idVendor}=="0409", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # NEC
-SUBSYSTEM=="usb",ATTR{idVendor}=="0414", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Gigabyte
-SUBSYSTEM=="usb",ATTR{idVendor}=="0471", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Philips
-SUBSYSTEM=="usb",ATTR{idVendor}=="0482", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Kyocera
-SUBSYSTEM=="usb",ATTR{idVendor}=="0489", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Foxconn
-SUBSYSTEM=="usb",ATTR{idVendor}=="04c5", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Fujitsu
-SUBSYSTEM=="usb",ATTR{idVendor}=="04c5", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Fujitsu Toshiba
-SUBSYSTEM=="usb",ATTR{idVendor}=="04da", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # PMC-Sierra
-SUBSYSTEM=="usb",ATTR{idVendor}=="04dd", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Sharp
-SUBSYSTEM=="usb",ATTR{idVendor}=="04e8", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Samsung
-SUBSYSTEM=="usb",ATTR{idVendor}=="0502", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Acer
-SUBSYSTEM=="usb",ATTR{idVendor}=="054c", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Sony
-SUBSYSTEM=="usb",ATTR{idVendor}=="05c6", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Qualcomm
-SUBSYSTEM=="usb",ATTR{idVendor}=="091e", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Garmin-Asus
-SUBSYSTEM=="usb",ATTR{idVendor}=="0930", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Toshiba
-SUBSYSTEM=="usb",ATTR{idVendor}=="0955", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Nvidia
-SUBSYSTEM=="usb",ATTR{idVendor}=="0b05", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # ASUS
-SUBSYSTEM=="usb",ATTR{idVendor}=="0bb4", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # HTC
-SUBSYSTEM=="usb",ATTR{idVendor}=="0e8d", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # MTK
-SUBSYSTEM=="usb",ATTR{idVendor}=="0fce", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Sony Ericsson
-SUBSYSTEM=="usb",ATTR{idVendor}=="1004", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # LG
-SUBSYSTEM=="usb",ATTR{idVendor}=="109b", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Hisense
-SUBSYSTEM=="usb",ATTR{idVendor}=="10a9", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Pantech
-SUBSYSTEM=="usb",ATTR{idVendor}=="12d1", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Huawei
-SUBSYSTEM=="usb",ATTR{idVendor}=="1782", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Multilaser
-SUBSYSTEM=="usb",ATTR{idVendor}=="17ef", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Lenovo
-SUBSYSTEM=="usb",ATTR{idVendor}=="18d1", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Google
-SUBSYSTEM=="usb",ATTR{idVendor}=="1949", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Amazon
-SUBSYSTEM=="usb",ATTR{idVendor}=="19d2", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # ZTE
-SUBSYSTEM=="usb",ATTR{idVendor}=="1d4d", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Pegatron
-SUBSYSTEM=="usb",ATTR{idVendor}=="1f53", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # SK Telesys
-SUBSYSTEM=="usb",ATTR{idVendor}=="201E", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Haier
-SUBSYSTEM=="usb",ATTR{idVendor}=="2080", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Nook
-SUBSYSTEM=="usb",ATTR{idVendor}=="2116", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # KT Tech
-SUBSYSTEM=="usb",ATTR{idVendor}=="2257", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # OTGV
-SUBSYSTEM=="usb",ATTR{idVendor}=="22b8", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Motorola
-SUBSYSTEM=="usb",ATTR{idVendor}=="22d9", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # OPPO
-SUBSYSTEM=="usb",ATTR{idVendor}=="2340", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Teleepoch
-SUBSYSTEM=="usb",ATTR{idVendor}=="24e3", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # K-Touch
-SUBSYSTEM=="usb",ATTR{idVendor}=="2717", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Xiaomi
-SUBSYSTEM=="usb",ATTR{idVendor}=="413c", MODE="0660",GROUP="wheel",SYMLINK+="android%n" # Dell
+# NEC
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0409", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Gigabyte
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0414", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Philips
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0471", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Kyocera
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0482", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Foxconn
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0489", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Fujitsu
+SUBSYSTEM=="usb",ATTRS{idVendor}=="04c5", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Fujitsu Toshiba
+SUBSYSTEM=="usb",ATTRS{idVendor}=="04c5", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# PMC-Sierra
+SUBSYSTEM=="usb",ATTRS{idVendor}=="04da", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Sharp
+SUBSYSTEM=="usb",ATTRS{idVendor}=="04dd", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Samsung
+SUBSYSTEM=="usb",ATTRS{idVendor}=="04e8", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Acer
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0502", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Sony
+SUBSYSTEM=="usb",ATTRS{idVendor}=="054c", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Qualcomm
+SUBSYSTEM=="usb",ATTRS{idVendor}=="05c6", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Garmin-Asus
+SUBSYSTEM=="usb",ATTRS{idVendor}=="091e", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Toshiba
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0930", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Nvidia
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0955", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# ASUS
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0b05", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# HTC
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0bb4", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# MTK
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0e8d", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Sony Ericsson
+SUBSYSTEM=="usb",ATTRS{idVendor}=="0fce", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# LG
+SUBSYSTEM=="usb",ATTRS{idVendor}=="1004", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Hisense
+SUBSYSTEM=="usb",ATTRS{idVendor}=="109b", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Pantech
+SUBSYSTEM=="usb",ATTRS{idVendor}=="10a9", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Huawei
+SUBSYSTEM=="usb",ATTRS{idVendor}=="12d1", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Multilaser
+SUBSYSTEM=="usb",ATTRS{idVendor}=="1782", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Lenovo
+SUBSYSTEM=="usb",ATTRS{idVendor}=="17ef", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Google
+SUBSYSTEM=="usb",ATTRS{idVendor}=="18d1", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Amazon
+SUBSYSTEM=="usb",ATTRS{idVendor}=="1949", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# ZTE
+SUBSYSTEM=="usb",ATTRS{idVendor}=="19d2", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Pegatron
+SUBSYSTEM=="usb",ATTRS{idVendor}=="1d4d", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# SK Telesys
+SUBSYSTEM=="usb",ATTRS{idVendor}=="1f53", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Haier
+SUBSYSTEM=="usb",ATTRS{idVendor}=="201E", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Nook
+SUBSYSTEM=="usb",ATTRS{idVendor}=="2080", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# KT Tech
+SUBSYSTEM=="usb",ATTRS{idVendor}=="2116", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# OTGV
+SUBSYSTEM=="usb",ATTRS{idVendor}=="2257", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Motorola
+SUBSYSTEM=="usb",ATTRS{idVendor}=="22b8", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# OPPO
+SUBSYSTEM=="usb",ATTRS{idVendor}=="22d9", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Teleepoch
+SUBSYSTEM=="usb",ATTRS{idVendor}=="2340", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# K-Touch
+SUBSYSTEM=="usb",ATTRS{idVendor}=="24e3", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Xiaomi
+SUBSYSTEM=="usb",ATTRS{idVendor}=="2717", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
+# Dell
+SUBSYSTEM=="usb",ATTRS{idVendor}=="413c", MODE="0644",GROUP="wheel",SYMLINK+="android%n"
 # End of file
 EOF
 
