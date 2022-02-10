@@ -3,6 +3,12 @@ export LANG=C
 
 KERNEL_VERSION=$(uname -r)
 
+# Disable CPU mitigations to improve performance on Desktop
+sed -i -e 's/rhgb/mitigations=off rhgb/g' /etc/defaults/grub
+
+[ -r /boot/grub2/grub.cfg ] && grub2-mkconfig -o /boot/grub2/grub.cfg
+[ -r /boot/efi/EFI/fedora/grub.cfg ] && grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+
 # Update the rescue image
 /etc/kernel/postinst.d/51-dracut-rescue-postinst.sh ${KERNEL_VERSION} /boot/vmlinuz-${KERNEL_VERSION}
 
