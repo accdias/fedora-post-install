@@ -62,7 +62,8 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['compose:ralt']"
 gsettings set org.gnome.desktop.input-sources per-window false
 # Disable automatic opening of folders while hovering on drag an drop operations
 gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
-
+# Set default click action to minimize/maximize
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 # Change Gnome Terminal word selection string
 #profile_puuid=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
 #gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$puuid/ word-char-exceptions '@ms "-=&#:/.?@+~_%;"'
