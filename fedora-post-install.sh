@@ -68,6 +68,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 #profile_puuid=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
 #gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$puuid/ word-char-exceptions '@ms "-=&#:/.?@+~_%;"'
 #gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$puuid/ word-char-exceptions '@ms nothing'
+# Set kitty as default Terminal
+gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty.desktop'
 
 # Remove uncessary packages
 sudo dnf remove -y abrt*
@@ -80,7 +82,7 @@ sudo dnf install -y tmate tmux tlp tlp-rdw icedtea-web
 systemctl enable tlp.service
 
 # Enable SSD trimmer
-sudo systemctl enable --now fstrim.timer
+#sudo systemctl enable --now fstrim.timer
 
 # Disable abrtd services
 for unit in abrtd abrt-ccpp abrt-journal-core abrt-oops abrt-pstoreoops abrt-vmcore abrt-xorg; do
