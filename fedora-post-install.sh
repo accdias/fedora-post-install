@@ -10,10 +10,10 @@ sed -i -e 's/rhgb/mitigations=off rhgb/g' /etc/defaults/grub
 [ -r /boot/efi/EFI/fedora/grub.cfg ] && grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 # Update the rescue image
-/etc/kernel/postinst.d/51-dracut-rescue-postinst.sh ${KERNEL_VERSION} /boot/vmlinuz-${KERNEL_VERSION}
+sudo /etc/kernel/postinst.d/51-dracut-rescue-postinst.sh ${KERNEL_VERSION} /boot/vmlinuz-${KERNEL_VERSION}
 
 # Give virt-manager permissions for wheel group
-cat << EOF >/etc/polkit-1/localauthority/50-local.d/50-org.virtman-libvirt-local-access.pkla
+cat << 'EOF' | sudo tee /etc/polkit-1/localauthority/50-local.d/50-org.virtman-libvirt-local-access.pkla
 [Allow group virtman libvirt management permissions]
 Identity=unix-group:wheel
 Action=org.libvirt.unix.manage
@@ -21,9 +21,9 @@ ResultAny=yes
 ResultInactive=yes
 ResultActive=yes
 EOF
-restorecon -F /etc/polkit-1/localauthority/50-local.d/50-org.virtman-libvirt-local-access.pkla
+sudo restorecon -F /etc/polkit-1/localauthority/50-local.d/50-org.virtman-libvirt-local-access.pkla
 
-cat << EOF >/etc/polkit-1/rules.d/80-libvirtd.rules
+cat << 'EOF' | sudo tee /etc/polkit-1/rules.d/80-libvirtd.rules
 /* Allow users in wheel group to manage the libvirt daemon without authentication */
 polkit.addRule(function(action, subject) {
     if (action.id == "org.libvirt.unix.manage" &&
@@ -32,7 +32,7 @@ polkit.addRule(function(action, subject) {
     }
 });
 EOF
-restorecon -F /etc/polkit-1/rules.d/80-libvirtd.rules
+sudo restorecon -F /etc/polkit-1/rules.d/80-libvirtd.rules
 
 # Enable tap-to-click on GDM (logon screen)
 sudo su - gdm -s /bin/bash << EOF
@@ -51,6 +51,8 @@ gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
 gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag true
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
+# Disable the fucking nag donation pop-up
+gsettings set org.gnome.settings-daemon.plugins.housekeeping donation-reminder-enabled false
 EOF
 
 # US International with dead keys
